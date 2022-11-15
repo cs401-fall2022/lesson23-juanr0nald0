@@ -1,0 +1,30 @@
+{
+  "name": "cs401-blogster",
+  "version": "1.0.0",
+  "description": "Full stack implementation of a simple blogging machine!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cs401-fall2022/lesson23-juanr0nald0.git"
+  },
+  "keywords": [
+    "blog",
+    "blogging",
+    "blogster",
+    "cs401",
+    "final",
+    "project"
+  ],
+  "author": "Juan Garcia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cs401-fall2022/lesson23-juanr0nald0/issues"
+  },
+  "homepage": "https://github.com/cs401-fall2022/lesson23-juanr0nald0#readme",
+  "dependencies": {
+    "sqlite3": "^5.1.2"
+  }
+}
