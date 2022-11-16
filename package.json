@@ -4,6 +4,7 @@
   "description": "Background image URL: Photo by Dominika Roseclay from Pexels: https://www.pexels.com/photo/close-up-photo-of-black-typewriter-977930/",
   "main": "index.js",
   "scripts": {
+    "start": "node main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
