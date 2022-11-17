@@ -1,12 +1,15 @@
 const express = require('express');
 const path = require('path');
 const sqlite3 = require('sqlite3').verbose();
+const http = require('http');
 
 const app = express();
-const db = new sqlite3.Database('data/test.db');
+const server = http.createServer(app);
+const db = new sqlite3.Database('data/blogsterEntries.db');
 
-app.use(express.static('public'));
-app.use(express.urlencoded({ extended: true }));
+// Express module code... >>>>>>>>>>>>>>>>>>>>>> MAY NEED
+// app.use(express.static('public'));
+// app.use(express.urlencoded({ extended: true }));
 
 // Respond with the homepage
 app.get('/', (req, res) => {res.sendFile(path.join(__dirname, 'public', 'index.html')); });
