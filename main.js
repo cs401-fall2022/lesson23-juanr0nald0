@@ -5,11 +5,19 @@ const http = require('http');
 
 const app = express();
 const server = http.createServer(app);
-const db = new sqlite3.Database('data/blogsterEntries.db');
+const db = new sqlite3.Database('data/blogsterEntries.db', (err) => {
+    if (err) {
+        return console.error(err.message);
+    }
+    console.log('Connected to the blogsterEntries SQLite3 database.')
+});
 
 // Express module code... >>>>>>>>>>>>>>>>>>>>>> MAY NEED
 // app.use(express.static('public'));
 // app.use(express.urlencoded({ extended: true }));
+
+// Fire up the database
+// db.run
 
 // Respond with the homepage
 app.get('/', (req, res) => {res.sendFile(path.join(__dirname, 'public', 'index.html')); });
@@ -40,8 +48,10 @@ process.on('SIGINT', () => {
         if (err) {
             console.error(err.message);
         }
-          console.log('Securing your blog entries.');
+          console.log('Error in closing database... trying to secure your blog entries.');
         });
-
+    
     server.close();
+    console.log('Blogster has closed successfully');
+    process.exit();
 });
