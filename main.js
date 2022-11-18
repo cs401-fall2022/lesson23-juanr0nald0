@@ -6,7 +6,7 @@ const http = require('http');
 const app = express();
 const server = http.createServer(app);
 // var db = new sqlite3.Database('/data/blogsterEntries.db', sqlite3.OPEN_READWRITE, (err) => {   // Trying ':memory:', instead of the db file because of error code: 'SQLITE_NOTADB'
-var db = new sqlite3.Database(path.resolve(__dirname,'data/blogsterEntries.sqlite')
+const db = new sqlite3.Database(path.resolve(__dirname,'data/blogsterEntries.sqlite')
 );
 
 // Express module code... >>>>>>>>>>>>>>>>>>>>>> MAY NEED
