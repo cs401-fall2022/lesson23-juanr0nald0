@@ -2,7 +2,7 @@
   "name": "lesson23-juanr0nald0",
   "version": "1.0.0",
   "description": "Background image URL: Photo by Dominika Roseclay from Pexels: https://www.pexels.com/photo/close-up-photo-of-black-typewriter-977930/",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "start": "node main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
