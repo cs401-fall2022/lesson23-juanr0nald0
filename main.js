@@ -15,7 +15,7 @@ const db = new sqlite3.Database(path.resolve(__dirname,'data/blogsterEntries.sql
 
 // Fire up the database
 db.run('CREATE TABLE IF NOT EXISTS entries(id INTEGER PRIMARY KEY, title TEXT, body TEXT, currentDate TEXT)');
-db.run(INSERT);
+db.run('INSERT INTO entries (title, body, currentDate) VALUES(\'Cant believe it!\', \'I think I got this working finally\', \'datetime()\');');
 // Respond with the homepage
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
