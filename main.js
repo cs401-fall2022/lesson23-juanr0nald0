@@ -13,14 +13,14 @@ const db = new sqlite3.Database(path.resolve(__dirname,'data/blogsterEntries.sql
 
 // Fire up the database and create an entries table
 db.serialize(function() {
-    db.run('DROP TABLE entries');
+    // db.run('DROP TABLE entries');
     db.run('CREATE TABLE IF NOT EXISTS entries(id integer PRIMARY KEY, title text(20), body TEXT(200), currentDate TEXT(20))');
     var currentDate = new Date().toDateString().replace(/\s/g,'');
 
     let myQueryObject = {
         paramOne: null,
-        paramTwo: "I can't believe it",
-        paramThree: "I think I got this working, date too",
+        paramTwo: "Test 2",
+        paramThree: "This is String Number two with a null id",
         paramFour: currentDate
     };
 
