@@ -12,20 +12,24 @@ const db = new sqlite3.Database(path.resolve(__dirname,'data/blogsterEntries.sql
 // app.use(express.urlencoded({ extended: true }));
 
 // Fire up the database and create an entries table
-db.run('CREATE TABLE IF NOT EXISTS entries(id INTEGER PRIMARY KEY, title TEXT, body TEXT, currentDate TEXT)');
-var date = new Date().toDateString().replace(/\s/g,'');
-console.log(date);
-// let myQueryObject = {
-//     paramOne: "I can't believe it",
-//     paramTwo: "I think I got this working, date too",
-//     paramThree: date
-// };
-// var query = 'INSERT INTO entries VALUES(:paramOne, :paramTwo, :paramThree);';
-var stringOne = "I hope this works";
-var stringTwo = "Oh man, I think it might work";
-db.run('INSERT INTO entries (title, body, currentDate) VALUES(@title, @body, @currentDate)', {stringOne, stringTwo, date});
-// db.run(query, [myQueryObject.paramOne, myQueryObject.paramTwo, myQueryObject.paramThree]);
+db.serialize(function() {
+    db.run('DROP TABLE entries');
+    db.run('CREATE TABLE IF NOT EXISTS entries(id integer PRIMARY KEY, title text(20), body TEXT(200), currentDate TEXT(20))');
+    var currentDate = new Date().toDateString().replace(/\s/g,'');
 
+    let myQueryObject = {
+        paramOne: null,
+        paramTwo: "I can't believe it",
+        paramThree: "I think I got this working, date too",
+        paramFour: currentDate
+    };
+
+    var query = 'INSERT INTO entries VALUES(:paramOne, :paramTwo, :paramThree, :paramFour);';
+    // var stringOne = "I hope this works";
+    // var stringTwo = "Oh man, I think it might work";
+    // db.run('INSERT INTO entries (title, body, currentDate) VALUES(@title, @body, @currentDate)', {stringOne, stringTwo, date});
+    db.run(query, [myQueryObject.paramOne, myQueryObject.paramTwo, myQueryObject.paramThree, myQueryObject.paramFour]);
+});
 
 // Respond with the homepage
 app.get('/', (req, res) => {
