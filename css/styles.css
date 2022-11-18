@@ -1,7 +1,7 @@
 h1 {
     background-color: aqua;
     font-weight: bold;
-    text-align: center;
+    text-align: right;
 }
 
 table {
@@ -13,6 +13,5 @@ table {
 }
 
 .menuOptions {
-    text-align: center;
-    padding: 50px;
+    text-align: right;
 }
