@@ -6,8 +6,38 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <h1>Welcome to Blogster!</h1>
-    <h3>To use this blogging machine, select an option from the bar along the left side of your screen!</h3>
+    <div class="header">
+        <h1>Welcome to Blogster!</h1>
+    </div>
+
+    <div class="menuOptions">
+        <table>
+            <tr>
+                <th>
+                    <button type="button">Create a blog entry!</button>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <button type="button">Read all of your entries</button>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <button type="button">Edit an existing entry</button>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <button type="button">Delete an entry</button>
+                </th>
+            </tr>
+        </table>
+    </div>
+
+<h3>To use this blogging machine, select an option from the menu bar!</h3>
+
+<div class="blogForm">
     <form action="message" method="post">
 
         <div>
@@ -23,6 +53,7 @@
         <button type="submit">Send</button>
 
     </form>
+</div>
 
 </body>
 </html>

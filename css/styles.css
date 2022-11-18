@@ -3,3 +3,16 @@ h1 {
     font-weight: bold;
     text-align: center;
 }
+
+table {
+    text-align: right;
+}
+
+.header {
+    color: blue;
+}
+
+.menuOptions {
+    text-align: center;
+    padding: 50px;
+}
