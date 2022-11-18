@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');       // Is this still necessary?
 const sqlite3 = require('sqlite3').verbose();
 const http = require('http');
+const { timeStamp } = require('console');
 
 const app = express();
 const server = http.createServer(app);
@@ -14,6 +15,7 @@ const db = new sqlite3.Database(path.resolve(__dirname,'data/blogsterEntries.sql
 // Fire up the database and create an entries table
 db.run('CREATE TABLE IF NOT EXISTS entries(id INTEGER PRIMARY KEY, title TEXT, body TEXT, currentDate TEXT)');
 db.run('INSERT INTO entries (title, body, currentDate) VALUES(\'Cant believe it!\', \'I think I got this working finally\', \'datetime()\');');
+
 // Respond with the homepage
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
@@ -39,7 +41,8 @@ app.post('/message', (req, res) => {
 
     let title = req.body.entryTitle;
     let body = req.body.entryBody;
-    let output = `${entryTitle}: ${entryBody}`;
+    let timeStamp = new Date();
+    let output = `${entryTitle}: ${entryBody}: ${timeStamp}`;
 
     res.send(output);
 });
