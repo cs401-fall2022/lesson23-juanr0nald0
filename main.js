@@ -11,9 +11,12 @@ const db = new sqlite3.Database(path.resolve(__dirname,'data/blogsterEntries.sql
 // app.use(express.static('public'));
 // app.use(express.urlencoded({ extended: true }));
 
-// Fire up the database and create an entries table
+// Fire up the server and await input
+app.listen(3000, () => console.log('Blogster is up and running... listening on port 3000'));
+
+// Create an entries table if it doesn't exist and add a test entry
 db.serialize(function() {
-    // db.run('DROP TABLE entries');
+    // db.run('DROP TABLE entries');        // Keeping this here for cleanup if necessary
     db.run('CREATE TABLE IF NOT EXISTS entries(id integer PRIMARY KEY, title text(20), body TEXT(200), currentDate TEXT(20))');
     var currentDate = new Date().toDateString().replace(/\s/g,'');
 
@@ -25,13 +28,11 @@ db.serialize(function() {
     };
 
     var query = 'INSERT INTO entries VALUES(:paramOne, :paramTwo, :paramThree, :paramFour);';
-    // var stringOne = "I hope this works";
-    // var stringTwo = "Oh man, I think it might work";
-    // db.run('INSERT INTO entries (title, body, currentDate) VALUES(@title, @body, @currentDate)', {stringOne, stringTwo, date});
+    
     db.run(query, [myQueryObject.paramOne, myQueryObject.paramTwo, myQueryObject.paramThree, myQueryObject.paramFour]);
 });
 
-// Respond with the homepage
+// Present user with the homepage
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
@@ -61,8 +62,6 @@ app.post('/message', (req, res) => {
 
     res.send(output);
 });
-
-app.listen(3000, () => console.log('Blogster is up and running... listening on port 3000'));
 
 // Close the app
 process.on('SIGINT', () => {
