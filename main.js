@@ -2,7 +2,6 @@ const express = require('express');
 const path = require('path');       // Is this still necessary?
 const sqlite3 = require('sqlite3').verbose();
 const http = require('http');
-const { timeStamp } = require('console');
 
 const app = express();
 const server = http.createServer(app);
@@ -14,25 +13,37 @@ const db = new sqlite3.Database(path.resolve(__dirname,'data/blogsterEntries.sql
 
 // Fire up the database and create an entries table
 db.run('CREATE TABLE IF NOT EXISTS entries(id INTEGER PRIMARY KEY, title TEXT, body TEXT, currentDate TEXT)');
-db.run('INSERT INTO entries (title, body, currentDate) VALUES(\'Cant believe it!\', \'I think I got this working finally\', \'datetime()\');');
+var date = new Date().toDateString().replace(/\s/g,'');
+console.log(date);
+// let myQueryObject = {
+//     paramOne: "I can't believe it",
+//     paramTwo: "I think I got this working, date too",
+//     paramThree: date
+// };
+// var query = 'INSERT INTO entries VALUES(:paramOne, :paramTwo, :paramThree);';
+var stringOne = "I hope this works";
+var stringTwo = "Oh man, I think it might work";
+db.run('INSERT INTO entries (title, body, currentDate) VALUES(@title, @body, @currentDate)', {stringOne, stringTwo, date});
+// db.run(query, [myQueryObject.paramOne, myQueryObject.paramTwo, myQueryObject.paramThree]);
+
 
 // Respond with the homepage
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Create a blog entry
-app.get('/', (req, res) => {
-    db.serialize(() => {
-        db.run('INSERT INTO entries(id, title, body, currentDate) VALUES(?,?,?,?)', [req.params.id, req.params.title, req.params.body, req.params.currentDate], function(err) {
-            if (err) {
-                return console.log(err.message);
-            }
-            console.log("New blog entry added successfully!");
-            res.send("New blog entry has been added to the database");
-        });
-    });
-});
+// // Create a blog entry
+// app.get('/', (req, res) => {
+//     db.serialize(() => {
+//         db.run('INSERT INTO entries(id, title, body, currentDate) VALUES(?,?,?,?)', [req.params.id, req.params.title, req.params.body, req.params.currentDate], function(err) {
+//             if (err) {
+//                 return console.log(err.message);
+//             }
+//             console.log("New blog entry added successfully!");
+//             res.send("New blog entry has been added to the database");
+//         });
+//     });
+// });
 
 // Send form data
 app.post('/message', (req, res) => {
