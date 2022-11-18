@@ -5,15 +5,13 @@ const http = require('http');
 
 const app = express();
 const server = http.createServer(app);
-// var db = new sqlite3.Database('/data/blogsterEntries.db', sqlite3.OPEN_READWRITE, (err) => {   // Trying ':memory:', instead of the db file because of error code: 'SQLITE_NOTADB'
-const db = new sqlite3.Database(path.resolve(__dirname,'data/blogsterEntries.sqlite')
-);
+const db = new sqlite3.Database(path.resolve(__dirname,'data/blogsterEntries.sqlite')); // We have a persistent database file!
 
 // Express module code... >>>>>>>>>>>>>>>>>>>>>> MAY NEED
 // app.use(express.static('public'));
 // app.use(express.urlencoded({ extended: true }));
 
-// Fire up the database
+// Fire up the database and create an entries table
 db.run('CREATE TABLE IF NOT EXISTS entries(id INTEGER PRIMARY KEY, title TEXT, body TEXT, currentDate TEXT)');
 db.run('INSERT INTO entries (title, body, currentDate) VALUES(\'Cant believe it!\', \'I think I got this working finally\', \'datetime()\');');
 // Respond with the homepage
