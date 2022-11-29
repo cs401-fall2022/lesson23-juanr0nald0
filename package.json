@@ -1,7 +1,7 @@
 {
   "name": "lesson23-juanr0nald0",
   "version": "1.0.0",
-  "description": "Background image URL: Photo by Dominika Roseclay from Pexels: https://www.pexels.com/photo/close-up-photo-of-black-typewriter-977930/",
+  "description": "Blogster is a blogging engine created as the full stack final project for CS401 Fall 2022.",
   "main": "main.js",
   "scripts": {
     "start": "node main.js",
