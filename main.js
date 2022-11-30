@@ -24,7 +24,13 @@ app.get('/', (req, res) => {
         entryTitle: 'Entry One',
         entryDate: Date.now(),
         entryBody: 'Manually creating an entry'
-    }]
+    },
+    {
+        entryTitle: 'Entry Two',
+        entryDate: Date.now(),
+        entryBody: 'Manually creating a second entry'
+    }
+]
     
     res.render('index', {blogEntries: blogEntries});
 });

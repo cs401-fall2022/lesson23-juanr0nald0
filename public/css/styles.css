@@ -1,3 +1,7 @@
+:root {
+    --color: 0, 0, 0;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -15,32 +19,52 @@ h1 {
     text-align: center;
 }
 
-table {
+/* table {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+} */
+
+
+
+a:hover {
+    background-color: rgba(var(--color), 0.8);
 }
 
 .box {
     margin: 0px;
     height: 100vh;
-    color: whitesmoke;
 }
 
 .buttons {
+    font-size: larger;
     text-align: center;
     color: white;
-    background: black;
+    background-color: rgba(var(--color), 0.4);
     padding: 5px;
     text-decoration: none;
-
 }
+
 .blogForm {
     margin-left: 50px;
 }
 
-.container {
-    color: blue;
+.container {   
+    color: white;
+    border-radius: 1em;
+    padding: 1em;
+    
+    top: 75%;
+    left: 50%;
+
+}
+
+.entryContainer {
+    border: 3px white;
+}
+
+.entryBody {
+    border: 3px white;
 }
 
 .menuOptions {    

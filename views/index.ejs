@@ -10,49 +10,60 @@
 
 <body>    
     <div class="box">
-    <div class="container">
-        <h1>Welcome to Blogster!</h1>
-        <div class="menuOptions">
-        <a href="/blogEntries/create" class="buttons">Create an Entry</a>
-        </div>
-        <div class="menuOptions">
-        <a href="/blogEntries/read" class="buttons">Read your Entries</a>
-        </div>
-        <div class="menuOptions">
-        <a href="/blogEntries/update" class="buttons">Edit an Entry</a>
-        </div>
-        <div class="menuOptions">
-        <a href="/blogEntries/delete" class="buttons">Delete an Entry</a>
-        </div>
-    </div>
-<h3>To use this blogging machine, select an option from the menu bar!</h3>
-</div>
 
-<div class="box">
-<% blogEntries.forEach(entry => { %>
-    <div class="entryContainer">
-        <%= entry.entryTitle %>
-    </div>
- <% }); %>
-</div>
+        <section class="one">
+            <div class="sectionContent">
+                <h1>Welcome to Blogster!</h1>
+                <p class="menuOptions">
+                    <a href="/blogEntries/create" class="buttons">Create an Entry</a>
+                </p>
+                <p class="menuOptions">
+                    <a href="/blogEntries/read" class="buttons">Read your Entries</a>
+                </p>
+                <p class="menuOptions">
+                    <a href="/blogEntries/update" class="buttons">Edit an Entry</a>
+                </p>
+                <p class="menuOptions">
+                    <a href="/blogEntries/delete" class="buttons">Delete an Entry</a>
+                </p>
+            </div>
+        </section>
 
-<div class="blogForm">
-    <h4>Create a blog entry by giving it a title and entering your blog in the "Body" text box.</h4>
-    <form action="message" method="post">
+        <section class="two">
+            <% blogEntries.forEach(entry => { %>
+                <div class="entryContainer">
+                    <div class="entryBody">
+                        <h3 class="entryTitle">
+                            <%= entry.entryTitle %>
+                        </h3>
+                        <h4 class="entryDate">
+                            <%= entry.entryDate %>
+                        </h4>
+                    </div>
+                </div>
+            <% }); %>
+        </section>
+    
+        <section class="three">
+            <div class="blogForm">
+                <h4>Create a blog entry by giving it a title and entering your blog in the "Body" text box.</h4>
+                <form action="message" method="post">
 
-        <div>
-            <label>Title:</label>
-            <input type="text" name="entryTitle">
+                    <div>
+                        <label>Title:</label>
+                        <input type="text" name="entryTitle">
+                    </div>
+
+                    <div>
+                        <label>Body:</label>
+                        <input type="text" name="entryBody">
+                    </div>
+
+                    <button type="submit" id="testing">Send</button>
+
+                </form>
+            </div>
         </div>
-
-        <div>
-            <label>Body:</label>
-            <input type="text" name="entryBody">
-        </div>
-
-        <button type="submit" id="testing">Send</button>
-
-    </form>
 </div>
 <script type="text/javascript" src="main.js" ></script>
 </body>
