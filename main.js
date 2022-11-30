@@ -11,7 +11,7 @@ const server = http.createServer(app);
 const db = new sqlite3.Database(path.resolve(__dirname,'data/blogsterEntries.sqlite')); // We have a persistent database file!
 
 
-// Express module code... >>>>>>>>>>>>>>>>>>>>>> MAY NEED
+// Part of link fo CSS styling and pictures
 app.use(express.static(__dirname + '/public'));
 // app.use(express.urlencoded({ extended: true }));
 

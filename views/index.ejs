@@ -9,43 +9,32 @@
 </head>
 
 <body>    
+    <div class="box">
     <div class="container">
         <h1>Welcome to Blogster!</h1>
+        <div class="menuOptions">
         <a href="/blogEntries/create" class="buttons">Create an Entry</a>
+        </div>
+        <div class="menuOptions">
+        <a href="/blogEntries/read" class="buttons">Read your Entries</a>
+        </div>
+        <div class="menuOptions">
+        <a href="/blogEntries/update" class="buttons">Edit an Entry</a>
+        </div>
+        <div class="menuOptions">
+        <a href="/blogEntries/delete" class="buttons">Delete an Entry</a>
+        </div>
     </div>
-
-    <div class="menuOptions">
-        <table>
-            <tr>
-                <th>
-                    <input type="button" onclick="test()" value="Create a blog entry!">
-                </th>
-            </tr>
-            <tr>
-                <th>
-                    <button type="button" id="reading">Read all of your entries</button>
-                </th>
-            </tr>
-            <tr>
-                <th>
-                    <button type="button" id="editing">Edit an existing entry</button>
-                </th>
-            </tr>
-            <tr>
-                <th>
-                    <button type="button" id="deleting">Delete an entry</button>
-                </th>
-            </tr>
-        </table>
-    </div>
-
 <h3>To use this blogging machine, select an option from the menu bar!</h3>
+</div>
 
+<div class="box">
 <% blogEntries.forEach(entry => { %>
     <div class="entryContainer">
         <%= entry.entryTitle %>
     </div>
  <% }); %>
+</div>
 
 <div class="blogForm">
     <h4>Create a blog entry by giving it a title and entering your blog in the "Body" text box.</h4>
