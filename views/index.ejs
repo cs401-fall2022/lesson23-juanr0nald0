@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Blogster</title>
+    <link rel="stylesheet" type="text/css" href="/public/css/styles.css">
+</head>
+
+<body>    
+    <div class="container">
+        <h1>Welcome to Blogster!</h1>
+    </div>
+
+    <div class="menuOptions">
+        <table>
+            <tr>
+                <th>
+                    <input type="button" onclick="test()" value="Create a blog entry!">
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <button type="button" id="reading">Read all of your entries</button>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <button type="button" id="editing">Edit an existing entry</button>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <button type="button" id="deleting">Delete an entry</button>
+                </th>
+            </tr>
+        </table>
+    </div>
+
+<h3>To use this blogging machine, select an option from the menu bar!</h3>
+
+<div class="blogForm">
+    <h4>Create a blog entry by giving it a title and entering your blog in the "Body" text box.</h4>
+    <form action="message" method="post">
+
+        <div>
+            <label>Title:</label>
+            <input type="text" name="entryTitle">
+        </div>
+
+        <div>
+            <label>Body:</label>
+            <input type="text" name="entryBody">
+        </div>
+
+        <button type="submit" id="testing">Send</button>
+
+    </form>
+</div>
+<script type="text/javascript" src="main.js" ></script>
+</body>
+</html>

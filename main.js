@@ -1,17 +1,27 @@
 const express = require('express');
+const blogRouter = require('./routes/blogEntries');
+const app = express();
+
 const path = require('path');       // Is this still necessary?
 const sqlite3 = require('sqlite3').verbose();
 const http = require('http');
 
-const app = express();
+
 const server = http.createServer(app);
 const db = new sqlite3.Database(path.resolve(__dirname,'data/blogsterEntries.sqlite')); // We have a persistent database file!
 
 
 // Express module code... >>>>>>>>>>>>>>>>>>>>>> MAY NEED
-// app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 // app.use(express.urlencoded({ extended: true }));
 
+app.set('view engine', 'ejs');
+app.use('/blogEntries', blogRouter);
+
+// Present user with the homepage (index.ejs)
+app.get('/', (req, res) => {
+    res.render('index', {text: 'Keep Blogging!'});
+});
 
 // Create an entries table if it doesn't exist and add a test entry
 db.serialize(function() {
@@ -31,10 +41,7 @@ db.serialize(function() {
     db.run(query, [myQueryObject.paramOne, myQueryObject.paramTwo, myQueryObject.paramThree, myQueryObject.paramFour]);
 });
 
-// Present user with the homepage
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
-});
+
 
 function test() {
     console.log("Button click worked");
@@ -78,10 +85,10 @@ process.on('SIGINT', () => {
             console.log('Error in closing database... trying to secure your blog entries.');
         }          
     });
-    console.log('Blogster has closed successfully');
+    console.log('\nBlogster has closed successfully');
     server.close();
     process.exit();
 });
 
 // Fire up the server and await input
-server.listen(3000, () => console.log('Blogster is up and running... listening on port 3000'));
+app.listen(3000, () => console.log('Blogster is up and running... listening on port 3000'));
