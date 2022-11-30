@@ -17,11 +17,15 @@ table {
     text-align: center;
 }
 
+.buttons {
+    text-align: center;
+    color: green;
+}
 .blogForm {
     margin-left: 50px;
 }
 
-.header {
+.container {
     color: blue;
 }
 

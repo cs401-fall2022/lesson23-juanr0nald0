@@ -20,7 +20,13 @@ app.use('/blogEntries', blogRouter);
 
 // Present user with the homepage (index.ejs)
 app.get('/', (req, res) => {
-    res.render('index', {text: 'Keep Blogging!'});
+    const blogEntries = [{
+        entryTitle: 'Entry One',
+        entryDate: Date.now(),
+        entryBody: 'Manually creating an entry'
+    }]
+    
+    res.render('index', {blogEntries: 'Keep Blogging!'});
 });
 
 // Create an entries table if it doesn't exist and add a test entry
