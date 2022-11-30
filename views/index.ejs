@@ -41,6 +41,12 @@
 
 <h3>To use this blogging machine, select an option from the menu bar!</h3>
 
+<% blogEntries.forEach(entry => { %>
+    <div class="entryContainer">
+        <%= entry.entryTitle %>
+    </div>
+ <% }); %>
+
 <div class="blogForm">
     <h4>Create a blog entry by giving it a title and entering your blog in the "Body" text box.</h4>
     <form action="message" method="post">

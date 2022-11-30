@@ -26,7 +26,7 @@ app.get('/', (req, res) => {
         entryBody: 'Manually creating an entry'
     }]
     
-    res.render('index', {blogEntries: 'Keep Blogging!'});
+    res.render('index', {blogEntries: blogEntries});
 });
 
 // Create an entries table if it doesn't exist and add a test entry
