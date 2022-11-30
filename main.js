@@ -7,12 +7,11 @@ const app = express();
 const server = http.createServer(app);
 const db = new sqlite3.Database(path.resolve(__dirname,'data/blogsterEntries.sqlite')); // We have a persistent database file!
 
+
 // Express module code... >>>>>>>>>>>>>>>>>>>>>> MAY NEED
 // app.use(express.static('public'));
 // app.use(express.urlencoded({ extended: true }));
 
-// Fire up the server and await input
-app.listen(3000, () => console.log('Blogster is up and running... listening on port 3000'));
 
 // Create an entries table if it doesn't exist and add a test entry
 db.serialize(function() {
@@ -34,9 +33,12 @@ db.serialize(function() {
 
 // Present user with the homepage
 app.get('/', (req, res) => {
-    // res.sendFile(path.join(__dirname, 'public', 'index.html'));
     res.sendFile(path.join(__dirname, 'index.html'));
 });
+
+function test() {
+    console.log("Button click worked");
+}
 
 // // Create a blog entry
 // app.get('/', (req, res) => {
@@ -80,3 +82,6 @@ process.on('SIGINT', () => {
     server.close();
     process.exit();
 });
+
+// Fire up the server and await input
+server.listen(3000, () => console.log('Blogster is up and running... listening on port 3000'));

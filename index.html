@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
-<body>
+<body>    
     <div class="header">
         <h1>Welcome to Blogster!</h1>
     </div>
@@ -15,22 +15,22 @@
         <table>
             <tr>
                 <th>
-                    <button type="button">Create a blog entry!</button>
+                    <input type="button" onclick="test()" value="Create a blog entry!">
                 </th>
             </tr>
             <tr>
                 <th>
-                    <button type="button">Read all of your entries</button>
+                    <button type="button" id="reading">Read all of your entries</button>
                 </th>
             </tr>
             <tr>
                 <th>
-                    <button type="button">Edit an existing entry</button>
+                    <button type="button" id="editing">Edit an existing entry</button>
                 </th>
             </tr>
             <tr>
                 <th>
-                    <button type="button">Delete an entry</button>
+                    <button type="button" id="deleting">Delete an entry</button>
                 </th>
             </tr>
         </table>
@@ -52,10 +52,10 @@
             <input type="text" name="entryBody">
         </div>
 
-        <button type="submit">Send</button>
+        <button type="submit" id="testing">Send</button>
 
     </form>
 </div>
-
+<script type="text/javascript" src="main.js" ></script>
 </body>
 </html>
