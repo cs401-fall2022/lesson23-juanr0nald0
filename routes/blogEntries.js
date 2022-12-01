@@ -1,8 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    res.send('Placeholder... this is inside blogEntries Route')
+router.get('/create', (req, res) => {
+    res.render('blogEntries/create')
+})
+
+router.post('/', (req, res) => {
+
 })
 
 module.exports = router;

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Blogster</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <script type="text/javascript" src="./main.js" ></script>
+</head>
+
+<body>    
+    <div class="box">
+        <h1>New Blogster Entry</h1>
+    
+        <form action="/blogEntries" onsubmit="test()">
+            <%- include('partial-form-fields') %>
+        </form>
+    </div>
+
+</body>
+</html>

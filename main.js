@@ -2,7 +2,7 @@ const express = require('express');
 const blogRouter = require('./routes/blogEntries');
 const app = express();
 
-const path = require('path');       // Is this still necessary?
+const path = require('path');
 const sqlite3 = require('sqlite3').verbose();
 const http = require('http');
 
@@ -11,7 +11,8 @@ const server = http.createServer(app);
 const db = new sqlite3.Database(path.resolve(__dirname,'data/blogsterEntries.sqlite')); // We have a persistent database file!
 
 
-// Part of link fo CSS styling and pictures
+
+// Part of link for CSS styling and pictures
 app.use(express.static(__dirname + '/public'));
 // app.use(express.urlencoded({ extended: true }));
 
@@ -21,43 +22,52 @@ app.use('/blogEntries', blogRouter);
 // Present user with the homepage (index.ejs)
 app.get('/', (req, res) => {
     const blogEntries = [{
-        entryTitle: 'Entry One',
-        entryDate: Date.now(),
-        entryBody: 'Manually creating an entry'
+        title: 'Entry One',
+        date: new Date(),
+        body: 'Manually creating an entry'
     },
     {
-        entryTitle: 'Entry Two',
-        entryDate: Date.now(),
-        entryBody: 'Manually creating a second entry'
+        title: 'Entry Two',
+        date: new Date(),
+        body: 'Manually creating a second entry'
     }
 ]
     
-    res.render('index', {blogEntries: blogEntries});
+    res.render('blogEntries/index', {blogEntries: blogEntries});
 });
+
 
 // Create an entries table if it doesn't exist and add a test entry
 db.serialize(function() {
-    // db.run('DROP TABLE entries');        // Keeping this here for cleanup if necessary
+    db.run('DROP TABLE entries');        // Keeping this here for cleanup if necessary
     db.run('CREATE TABLE IF NOT EXISTS entries(id integer PRIMARY KEY, title text(20), body TEXT(200), currentDate TEXT(20))');
-    var currentDate = new Date().toDateString().replace(/\s/g,'');
+    
+});
+
+// Create a blog entry
+function createEntry(titleArg, blogArg) {
 
     let myQueryObject = {
         paramOne: null,
-        paramTwo: "Test 2",
-        paramThree: "This is String Number two with a null id",
-        paramFour: currentDate
+        title: "Test 2",
+        blog: "This is String Number two with a null id",
+        date: new Date().toDateString().replace(/\s/g,''),
     };
 
-    var query = 'INSERT INTO entries VALUES(:paramOne, :paramTwo, :paramThree, :paramFour);';
+    var query = 'INSERT INTO entries VALUES(:paramOne, :title, :blog, :date);';
     
-    db.run(query, [myQueryObject.paramOne, myQueryObject.paramTwo, myQueryObject.paramThree, myQueryObject.paramFour]);
-});
-
+    db.run(query, [myQueryObject.paramOne, myQueryObject.title, myQueryObject.blog, myQueryObject.date]);
+}
 
 
 function test() {
     console.log("Button click worked");
 }
+
+module.exports = {
+    test: test
+}
+var helper = require('./main');
 
 // // Create a blog entry
 // app.get('/', (req, res) => {
