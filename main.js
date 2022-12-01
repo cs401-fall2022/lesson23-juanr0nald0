@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
 // Create an entries table if it doesn't exist and add a test entry
 db.serialize(function() {
     db.run('DROP TABLE entries');        // Keeping this here for cleanup if necessary
-    db.run('CREATE TABLE IF NOT EXISTS entries(id integer PRIMARY KEY, title text(20), body TEXT(200), currentDate TEXT(20))');
+    db.run('CREATE TABLE IF NOT EXISTS entries(id integer PRIMARY KEY, title text(20), blog TEXT(200), dateCreated TEXT(20))');
     
 });
 
@@ -51,23 +51,23 @@ function createEntry(titleArg, blogArg) {
         paramOne: null,
         title: "Test 2",
         blog: "This is String Number two with a null id",
-        date: new Date().toDateString().replace(/\s/g,''),
+        dateCreated: new Date().toDateString().replace(/\s/g,''),
     };
 
-    var query = 'INSERT INTO entries VALUES(:paramOne, :title, :blog, :date);';
+    var query = 'INSERT INTO entries VALUES(:paramOne, :title, :blog, :dateCreated);';
     
-    db.run(query, [myQueryObject.paramOne, myQueryObject.title, myQueryObject.blog, myQueryObject.date]);
+    db.run(query, [myQueryObject.paramOne, myQueryObject.title, myQueryObject.blog, myQueryObject.dateCreated]);
 }
 
 
-function test() {
-    console.log("Button click worked");
-}
+// function test() {
+//     console.log("Button click worked");
+// }
 
-module.exports = {
-    test: test
-}
-var helper = require('./main');
+// module.exports = {
+//     test: test
+// }
+// var helper = require('./main');
 
 // // Create a blog entry
 // app.get('/', (req, res) => {
