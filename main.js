@@ -1,26 +1,27 @@
 const express = require('express');
-const blogRouter = require('./routes/blogEntries');
+const blogRouter = require('./routes/blogEntries'); // Can access the router exported in blogEntries.js
 const app = express();
-
 const path = require('path');
 const sqlite3 = require('sqlite3').verbose();
 const http = require('http');
-
-
 const server = http.createServer(app);
 const db = new sqlite3.Database(path.resolve(__dirname,'data/blogsterEntries.sqlite')); // We have a persistent database file!
-
 
 
 // Part of link for CSS styling and pictures
 app.use(express.static(__dirname + '/public'));
 // app.use(express.urlencoded({ extended: true }));
 
+// Views are being written in ejs
 app.set('view engine', 'ejs');
+
+// Blogster is using the router exported from blogEntries.js
+// this sets the router/index at localhost:3000/blogEntries
 app.use('/blogEntries', blogRouter);
 
 // Present user with the homepage (index.ejs)
 app.get('/', (req, res) => {
+    // Manual blog entries to test functionality/rendering
     const blogEntries = [{
         title: 'Entry One',
         date: new Date(),
@@ -30,9 +31,7 @@ app.get('/', (req, res) => {
         title: 'Entry Two',
         date: new Date(),
         body: 'Manually creating a second entry'
-    }
-]
-    
+    }]    
     res.render('blogEntries/index', {blogEntries: blogEntries});
 });
 
@@ -114,3 +113,5 @@ process.on('SIGINT', () => {
 
 // Fire up the server and await input
 app.listen(3000, () => console.log('Blogster is up and running... listening on port 3000'));
+
+// command to find/kill process after a crash: $lsof -i tcp:3000 / kill -9 PID
