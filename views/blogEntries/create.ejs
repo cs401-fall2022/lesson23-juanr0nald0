@@ -6,16 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Create a New Blogster Entry</title>
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
-    <script type="text/javascript" src="./main.js" ></script>
+    <script type="text/javascript" src="/main.js" ></script>
+    <script type="text/javascript" src="/routes/blogEntries.js" ></script>
 </head>
 
 <body>    
     <div class="box">
         <h1>New Blogster Entry</h1>
     
-        <form action="/blogEntries" method="POST"> <!-- onsubmit="test()"> -->
+        <form action="/blogEntries" method="POST">
             <!-- Partial view of a form that is being used by Create and Edit -->
             <%- include('partial-form-fields') %>
+            
         </form>
     </div>
 

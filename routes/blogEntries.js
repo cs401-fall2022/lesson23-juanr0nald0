@@ -21,7 +21,7 @@ router.post('/', (req, res) => {
     var query = 'INSERT INTO entries VALUES(:paramOne, :paramTwo, :paramThree, :paramFour);';
     
     db.run(query, [myQueryObject.paramOne, myQueryObject.title, myQueryObject.blog, myQueryObject.dateCreated]);
-    alert("Query was sent to database!")
+    console.log("Query was sent to database!");
 })
 
 // The router can be accessed from other files
