@@ -5,7 +5,7 @@ const path = require('path');
 const sqlite3 = require('sqlite3').verbose();
 const http = require('http');
 const server = http.createServer(app);
-const db = new sqlite3.Database(path.resolve(__dirname,'data/blogsterEntries.sqlite')); // We have a persistent database file!
+let db = new sqlite3.Database(path.resolve(__dirname,'data/blogsterEntries.sqlite')); // We have a persistent database file!
 
 
 // Part of link for CSS styling and pictures
@@ -96,21 +96,31 @@ app.post('/message', (req, res) => {
 });
 
 // Close the app
-process.on('SIGINT', () => {
-
-    db.close((err) => {
-
-        console.log('Blogster is shutting down');
-
-        if (err) {
-            console.error(err.message);
-            console.log('Error in closing database... trying to secure your blog entries.');
-        }          
-    });
-    console.log('\nBlogster has closed successfully');
+function shutDownBlogster() {
+    console.log('\nBlogster is shutting down');
+    db.close();
     server.close();
     process.exit();
-});
+}
+process.on('SIGINT', shutDownBlogster);
+process.on('SIGTERM', shutDownBlogster);
+process.on('SIGQUIT', shutDownBlogster);
+// process.on('SIGINT', () => {
+
+//     db.close((err) => {
+
+//         console.log('Blogster is shutting down');
+
+//         if (err) {
+//             console.error(err.message);
+//             console.log('Error in closing database... trying to secure your blog entries.');
+//         }          
+//     });
+//     console.log('\nBlogster has closed successfully');
+//     db.close();
+//     server.close();
+//     process.exit();
+// });
 
 // Fire up the server and await input
 app.listen(3000, () => console.log('Blogster is up and running... listening on port 3000'));
