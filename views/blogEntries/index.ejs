@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Blogster</title>
+    <title>Blogster!</title>
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
     <script type="text/javascript" src="./main.js" ></script>
 </head>
@@ -33,16 +33,20 @@
         <section class="two">
             <% blogEntries.forEach(entry => { %>
                 <div class="entryContainer">
-                    <div class="entryBody">
-                        <h3 class="blogTitle">
+                    <div class="entry">
+                        <h2 class="blogTitle">
                             <%= entry.title %>
-                        </h3>
+                        </h2>
+                        <div class="entrySubsection">
                         <h4 class="blogDate">
                             <%= entry.date %>
                         </h4>
-                        <h5 class="blogText">
+                        </div>
+                        <div class="entrySubsection">
+                        <h5 class="blogBody">
                             <%= entry.body %>
                         </h5>
+                        </div>
                     </div>
                 </div>
             <% }); %>

@@ -31,7 +31,8 @@ app.get('/', (req, res) => {
         title: 'Entry Two',
         date: new Date(),
         body: 'Manually creating a second entry'
-    }]    
+    }]
+    // the second argument is being passed to the <%= blogEntries %> tag in index.ejs     
     res.render('blogEntries/index', {blogEntries: blogEntries});
 });
 
