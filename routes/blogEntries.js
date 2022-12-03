@@ -41,17 +41,36 @@ router
 router
     .route('/read')
     .get((req, res) => {
-        // Manual blog entries to test functionality/rendering
-        const blogEntries = [{
-            title: 'Entry One',
-            date: new Date(),
-            body: 'Manually creating an entry'
-        },
-        {
-            title: 'Entry Two',
-            date: new Date(),
-            body: 'Manually creating a second entry'
-        }]
+        var blogEntries = [{}];
+        var currentEntry = {
+            paramOne: null,
+            title: '',
+            blog: '',
+            dateCreated: '',
+        };
+        db.all()("SELECT id, title, blog, dateCreated FROM entries", function(err, rows) {
+            rows.forEach(function (row) {
+                console.log(row.id, row.title, row.blog, row.dateCreated);
+                currentEntry.paramOne = row.id;
+                currentEntry.title = row.title;
+                currentEntry.blog = row.blog;
+                currentEntry.dateCreated= row.dateCreated
+                blogEntries.push(currentEntry);
+            })
+        })
+        
+        
+        // // Manual blog entries to test functionality/rendering
+        // const blogEntries = [{
+        //     title: 'Entry One',
+        //     date: new Date(),
+        //     body: 'Manually creating an entry'
+        // },
+        // {
+        //     title: 'Entry Two',
+        //     date: new Date(),
+        //     body: 'Manually creating a second entry'
+        // }]
         res.render('blogEntries/read', {blogEntries: blogEntries});
     })
     .post((req, res) => {
