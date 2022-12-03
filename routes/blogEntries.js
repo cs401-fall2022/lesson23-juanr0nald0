@@ -17,8 +17,6 @@ router
         res.render('blogEntries/create')
     })
     .post((req, res) => {
-        // var blogTitle = req.body.title;
-        // var blogEntry = req.body.blog;
         let myQueryObject = {
             paramOne: null,
             title: req.body.title,
@@ -29,7 +27,14 @@ router
         var query = 'INSERT INTO entries VALUES(:paramOne, :title, :blog, :dateCreated);';
         
         db.run(query, [myQueryObject.paramOne, myQueryObject.title, myQueryObject.blog, myQueryObject.dateCreated]);
-        res.send("Final test of custom create POST went through!");
+        res.render('blogEntries/success');
+    })
+
+// Route /success is appended to localhost:3000/blogEntries in main.js
+router
+    .route('/success')
+    .get((req, res) => {
+        res.render('blogEntries/success');
     })
 
 // Route /read is appended to localhost:3000/blogEntries in main.js
@@ -47,7 +52,7 @@ router
             date: new Date(),
             body: 'Manually creating a second entry'
         }]
-        res.render('blogEntries/read', {blogEntries: blogEntries})
+        res.render('blogEntries/read', {blogEntries: blogEntries});
     })
     .post((req, res) => {
         res.send("test of read POST");
