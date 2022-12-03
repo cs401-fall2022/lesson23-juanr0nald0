@@ -36,6 +36,17 @@ router
 router
     .route('/read')
     .get((req, res) => {
+        // Manual blog entries to test functionality/rendering
+        const blogEntries = [{
+            title: 'Entry One',
+            date: new Date(),
+            body: 'Manually creating an entry'
+        },
+        {
+            title: 'Entry Two',
+            date: new Date(),
+            body: 'Manually creating a second entry'
+        }]
         res.render('blogEntries/read', {blogEntries: blogEntries})
     })
     .post((req, res) => {
