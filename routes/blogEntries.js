@@ -17,19 +17,19 @@ router
         res.render('blogEntries/create')
     })
     .post((req, res) => {
-        // var blogTitle = document.getElementById("title");
-        // var blogEntry = document.getElementById("blog");
+        // var blogTitle = req.body.title;
+        // var blogEntry = req.body.blog;
         let myQueryObject = {
             paramOne: null,
-            title: "POST form test from create.ejs",
-            blog: "This string is hardcoded in blogEntries.js to test",
+            title: req.body.title,
+            blog: req.body.blog,
             dateCreated: new Date().toDateString().replace(/\s/g,''),
         };
     
         var query = 'INSERT INTO entries VALUES(:paramOne, :title, :blog, :dateCreated);';
         
         db.run(query, [myQueryObject.paramOne, myQueryObject.title, myQueryObject.blog, myQueryObject.dateCreated]);
-        res.send("test of create POST went through!");
+        res.send("Final test of custom create POST went through!");
     })
 
 // Route /read is appended to localhost:3000/blogEntries in main.js
