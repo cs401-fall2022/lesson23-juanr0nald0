@@ -43,7 +43,18 @@ app.get('/', (req, res) => {
 // Create an entries table if it doesn't exist and add a test entry
 db.serialize(function() {
     db.run('DROP TABLE entries');        // Keeping this here for cleanup if necessary
-    db.run('CREATE TABLE IF NOT EXISTS entries(id integer PRIMARY KEY, title text(20), blog TEXT(200), dateCreated TEXT(20))');
+    db.run('CREATE TABLE IF NOT EXISTS entries(id integer PRIMARY KEY, title TEXT(20), blog TEXT(200), dateCreated TEXT(20))');
+
+    let myQueryObject = {
+        paramOne: null,
+        title: "Test 1",
+        blog: "This is a string with a null id made from main.js",
+        dateCreated: new Date().toDateString().replace(/\s/g,''),
+    };
+
+    var query = 'INSERT INTO entries VALUES(:paramOne, :title, :blog, :dateCreated);';
+    
+    db.run(query, [myQueryObject.paramOne, myQueryObject.title, myQueryObject.blog, myQueryObject.dateCreated]);
     
 });
 
