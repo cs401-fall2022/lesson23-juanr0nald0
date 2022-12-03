@@ -9,7 +9,28 @@
 <body>    
     <div class="box">
         <h1>Read Your Entries!</h1>
-        <a class="cancelButton" href="/">Cancel</a>
+        <a class="cancelButton" href="/">Back to Homepage</a>
+        <section class="two">
+            <% blogEntries.forEach(entry => { %>
+                <div class="entryContainer">
+                    <div class="entry">
+                        <h2 class="blogTitle">
+                            <%= entry.title %>
+                        </h2>
+                        <div class="entrySubsection">
+                        <h4 class="blogDate">
+                            <%= entry.date %>
+                        </h4>
+                        </div>
+                        <div class="entrySubsection">
+                        <h5 class="blogBody">
+                            <%= entry.body %>
+                        </h5>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </section>
     </div>
 
 </body>

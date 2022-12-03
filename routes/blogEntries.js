@@ -1,6 +1,3 @@
-// Routes directly related to blogEntries
-// i.e. "ShowAll" and "Edit"
-
 const express = require("express");
 let router = express.Router();
 
@@ -39,7 +36,7 @@ router
 router
     .route('/read')
     .get((req, res) => {
-        res.render('blogEntries/read')
+        res.render('blogEntries/read', {blogEntries: blogEntries})
     })
     .post((req, res) => {
         res.send("test of read POST");

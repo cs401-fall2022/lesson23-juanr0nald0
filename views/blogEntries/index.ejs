@@ -25,30 +25,7 @@
                     <a href="/blogEntries/delete" class="buttons">Delete an Entry</a>
                 </p>
             </div>
-        </section>
-
-        <section class="two">
-            <% blogEntries.forEach(entry => { %>
-                <div class="entryContainer">
-                    <div class="entry">
-                        <h2 class="blogTitle">
-                            <%= entry.title %>
-                        </h2>
-                        <div class="entrySubsection">
-                        <h4 class="blogDate">
-                            <%= entry.date %>
-                        </h4>
-                        </div>
-                        <div class="entrySubsection">
-                        <h5 class="blogBody">
-                            <%= entry.body %>
-                        </h5>
-                        </div>
-                    </div>
-                </div>
-            <% }); %>
-        </section>
-    
+        </section>    
     </div>
 </body>
 </html>

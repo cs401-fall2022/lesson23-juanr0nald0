@@ -22,7 +22,6 @@ app.set('view engine', 'ejs');
  * Blogster is using the router exported from blogEntries.js. This sets the router/index at localhost:3000/blogEntries.
  * "Use the blogEntries.js file to handle endpoints that start with /blogEntries"
  */
-
 app.use('/blogEntries', blogRouter);
 
 // Present user with the homepage (index.ejs)
@@ -39,25 +38,26 @@ app.get('/', (req, res) => {
         body: 'Manually creating a second entry'
     }]
     // the second argument is being passed to the <%= blogEntries %> tag in index.ejs     
-    res.render('blogEntries/index', {blogEntries: blogEntries});
+    // res.render('blogEntries/index', {blogEntries: blogEntries});
+    res.render('blogEntries/index');
 });
 
 
 // Create an entries table if it doesn't exist and add a test entry
 db.serialize(function() {
-    db.run('DROP TABLE entries');        // Keeping this here for cleanup if necessary
+    // db.run('DROP TABLE entries');        // Keeping this here for cleanup if necessary
     db.run('CREATE TABLE IF NOT EXISTS entries(id integer PRIMARY KEY, title TEXT(20), blog TEXT(200), dateCreated TEXT(20))');
 
-    let myQueryObject = {
-        paramOne: null,
-        title: "Test 1",
-        blog: "This is a string with a null id made from main.js",
-        dateCreated: new Date().toDateString().replace(/\s/g,''),
-    };
+    // let myQueryObject = {
+    //     paramOne: null,
+    //     title: "Test 1",
+    //     blog: "This is a string with a null id made from main.js",
+    //     dateCreated: new Date().toDateString().replace(/\s/g,''),
+    // };
 
-    var query = 'INSERT INTO entries VALUES(:paramOne, :title, :blog, :dateCreated);';
+    // var query = 'INSERT INTO entries VALUES(:paramOne, :title, :blog, :dateCreated);';
     
-    db.run(query, [myQueryObject.paramOne, myQueryObject.title, myQueryObject.blog, myQueryObject.dateCreated]);
+    // db.run(query, [myQueryObject.paramOne, myQueryObject.title, myQueryObject.blog, myQueryObject.dateCreated]);
     
 });
 
