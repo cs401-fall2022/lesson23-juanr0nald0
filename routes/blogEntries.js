@@ -36,7 +36,7 @@ router
 
 // Route /delete is appended to localhost:3000/blogEntries in main.js
 router
-    .route('/create')
+    .route('/delete')
     .get((req, res) => {
         res.render('blogEntries/delete')
     })

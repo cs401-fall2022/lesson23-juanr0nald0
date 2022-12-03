@@ -17,13 +17,13 @@
             <div class="sectionContent">
                 <h1>Welcome to Blogster!</h1>
                 <p class="menuOptions">
-                    <a href="/blogEntries/create" onclick="test()" class="buttons">Create an Entry</a>
+                    <a href="/blogEntries/create" class="buttons">Create an Entry</a>
                 </p>
                 <p class="menuOptions">
                     <a href="/blogEntries/read" class="buttons">Read your Entries</a>
                 </p>
                 <p class="menuOptions">
-                    <a href="/blogEntries/update" class="buttons">Edit an Entry</a>
+                    <a href="/blogEntries/edit" class="buttons">Edit an Entry</a>
                 </p>
                 <p class="menuOptions">
                     <a href="/blogEntries/delete" class="buttons">Delete an Entry</a>
@@ -53,26 +53,6 @@
             <% }); %>
         </section>
     
-        <section class="three">
-            <div class="blogForm">
-                <h4>Create a blog entry by giving it a title and entering your blog in the "Body" text box.</h4>
-                <form action="message" method="post">
-
-                    <div>
-                        <label>Title:</label>
-                        <input type="text" name="title">
-                    </div>
-
-                    <div>
-                        <label>Body:</label>
-                        <input type="text" name="text">
-                    </div>
-
-                    <button type="submit" id="testing">Send</button>
-
-                </form>
-            </div>
-        </div>
-</div>
+    </div>
 </body>
 </html>
