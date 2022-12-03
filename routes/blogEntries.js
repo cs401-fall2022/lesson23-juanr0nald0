@@ -4,10 +4,6 @@
 const express = require("express");
 let router = express.Router();
 
-var asdf = {
-    title: "TestName",
-    number: "TestNumber"
-}
 // Route /create is appended to localhost:3000/blogEntries in main.js
 router
     .route('/create')
@@ -25,7 +21,7 @@ router
         // var query = 'INSERT INTO entries VALUES(:paramOne, :title, :blog, :dateCreated);';
         
         // db.run(query, [myQueryObject.paramOne, myQueryObject.title, myQueryObject.blog, myQueryObject.dateCreated]);
-        res.send("test of create POST went through! Print test object: " + asdf.title + asdf.number);
+        res.send("test of create POST went through! Print test submission: " + req.params.title + req.params.blog);
     })
 
 // Route /read is appended to localhost:3000/blogEntries in main.js
