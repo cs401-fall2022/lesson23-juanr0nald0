@@ -65,7 +65,14 @@ router
         res.render('blogEntries/edit')
     })
     .post((req, res) => {
-        res.send("test of edit POST");
+        let postIDNumber = req.body.idnumber;
+        if (req.body.title == null) {
+            var query = 'UPDATE entries SET blog = ' + req.body.blog + '\' WHERE id = ' + postIDNumber + '\''
+        }        
+        
+        
+        db.run(query, [myQueryObject.paramOne, myQueryObject.title, myQueryObject.blog, myQueryObject.dateCreated]);
+        res.render('blogEntries/success');
     })
 
 // Route /delete is appended to localhost:3000/blogEntries in main.js
@@ -75,7 +82,17 @@ router
         res.render('blogEntries/delete')
     })
     .post((req, res) => {
-        res.send("test of delete POST");
+        let myQueryObject = {
+            paramOne: null,
+            title: req.body.title,
+            blog: req.body.blog,
+            dateCreated: new Date().toDateString().replace(/\s/g,''),
+        };
+    
+        var query = 'INSERT INTO entries VALUES(:paramOne, :title, :blog, :dateCreated);';
+        
+        db.run(query, [myQueryObject.paramOne, myQueryObject.title, myQueryObject.blog, myQueryObject.dateCreated]);
+        res.render('blogEntries/success');
     })
 
 
