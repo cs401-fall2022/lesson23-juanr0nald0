@@ -4,6 +4,15 @@
 const express = require("express");
 let router = express.Router();
 
+const app = express();
+const path = require('path');
+const sqlite3 = require('sqlite3').verbose();
+const http = require('http');
+const server = http.createServer(app);
+let db = new sqlite3.Database(path.resolve(__dirname,'../data/blogsterEntries.sqlite'));
+
+
+
 // Route /create is appended to localhost:3000/blogEntries in main.js
 router
     .route('/create')
@@ -11,17 +20,19 @@ router
         res.render('blogEntries/create')
     })
     .post((req, res) => {
-        // let myQueryObject = {
-        //     paramOne: null,
-        //     title: "POST form test from create.ejs",
-        //     blog: "This string is hardcoded in blogEntries.js to test",
-        //     dateCreated: new Date().toDateString().replace(/\s/g,''),
-        // };
+        // var blogTitle = document.getElementById("title");
+        // var blogEntry = document.getElementById("blog");
+        let myQueryObject = {
+            paramOne: null,
+            title: "POST form test from create.ejs",
+            blog: "This string is hardcoded in blogEntries.js to test",
+            dateCreated: new Date().toDateString().replace(/\s/g,''),
+        };
     
-        // var query = 'INSERT INTO entries VALUES(:paramOne, :title, :blog, :dateCreated);';
+        var query = 'INSERT INTO entries VALUES(:paramOne, :title, :blog, :dateCreated);';
         
-        // db.run(query, [myQueryObject.paramOne, myQueryObject.title, myQueryObject.blog, myQueryObject.dateCreated]);
-        res.send("test of create POST went through! Print test submission: " + req.params.title + req.params.blog);
+        db.run(query, [myQueryObject.paramOne, myQueryObject.title, myQueryObject.blog, myQueryObject.dateCreated]);
+        res.send("test of create POST went through!");
     })
 
 // Route /read is appended to localhost:3000/blogEntries in main.js
