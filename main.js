@@ -1,5 +1,5 @@
 const express = require('express');
-const blogRouter = require('./routes/blogEntries'); // Can access the router exported in blogEntries.js
+const blogRouter = require('./routes/blogEntries.js'); // Can access the router exported in blogEntries.js
 const app = express();
 const path = require('path');
 const sqlite3 = require('sqlite3').verbose();
@@ -77,11 +77,10 @@ function createEntry(titleArg, blogArg) {
 // function test() {
 //     console.log("Button click worked");
 // }
-
-// module.exports = {
-//     test: test
-// }
-// var helper = require('./main');
+var testObject = {
+    name: "Test",
+    idNumber: 12340987,
+}
 
 // // Create a blog entry
 // app.get('/', (req, res) => {
@@ -111,3 +110,7 @@ process.on('SIGQUIT', shutDownBlogster);
 app.listen(3000, () => console.log('Blogster is up and running... listening on port 3000'));
 
 // command to find/kill process after a crash: $lsof -i tcp:3000 / kill -9 PID
+module.exports = {
+    testObject,
+    db
+};

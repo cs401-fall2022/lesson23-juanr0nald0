@@ -1,9 +1,13 @@
 // Routes directly related to blogEntries
 // i.e. "ShowAll" and "Edit"
 
-const express = require('express');
+const express = require("express");
 let router = express.Router();
 
+var asdf = {
+    title: "TestName",
+    number: "TestNumber"
+}
 // Route /create is appended to localhost:3000/blogEntries in main.js
 router
     .route('/create')
@@ -11,7 +15,17 @@ router
         res.render('blogEntries/create')
     })
     .post((req, res) => {
-        res.send("test of create POST");
+        // let myQueryObject = {
+        //     paramOne: null,
+        //     title: "POST form test from create.ejs",
+        //     blog: "This string is hardcoded in blogEntries.js to test",
+        //     dateCreated: new Date().toDateString().replace(/\s/g,''),
+        // };
+    
+        // var query = 'INSERT INTO entries VALUES(:paramOne, :title, :blog, :dateCreated);';
+        
+        // db.run(query, [myQueryObject.paramOne, myQueryObject.title, myQueryObject.blog, myQueryObject.dateCreated]);
+        res.send("test of create POST went through! Print test object: " + asdf.title + asdf.number);
     })
 
 // Route /read is appended to localhost:3000/blogEntries in main.js
@@ -43,22 +57,6 @@ router
     .post((req, res) => {
         res.send("test of delete POST");
     })
-
-// // Function called when a form for a new Blogster entry is submitted from create.ejs
-// router.post('/', (req, res) => {
-//     let myQueryObject = {
-//         paramOne: null,
-//         title: "Submit Button Pressed",
-//         blog: "This blog came from partial-form-fields.ejs Submit button",
-//         dateCreated: new Date().toDateString().replace(/\s/g,''),
-//     };
-
-//     var query = 'INSERT INTO entries VALUES(:paramOne, :paramTwo, :paramThree, :paramFour);';
-    
-//     db.run(query, [myQueryObject.paramOne, myQueryObject.title, myQueryObject.blog, myQueryObject.dateCreated]);
-//     console.log("Query was sent to database!");
-// })
-
 
 
 // The router can be accessed from other files
