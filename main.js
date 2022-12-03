@@ -15,8 +15,11 @@ app.use(express.static(__dirname + '/public'));
 // Views are being written in ejs
 app.set('view engine', 'ejs');
 
-// Blogster is using the router exported from blogEntries.js
-// this sets the router/index at localhost:3000/blogEntries
+/**
+ * Blogster is using the router exported from blogEntries.js. This sets the router/index at localhost:3000/blogEntries.
+ * "Use the blogEntries.js file to handle endpoints that start with /blogEntries"
+ */
+
 app.use('/blogEntries', blogRouter);
 
 // Present user with the homepage (index.ejs)
@@ -82,22 +85,9 @@ function createEntry(titleArg, blogArg) {
 //     });
 // });
 
-// Send form data
-app.post('/message', (req, res) => {
-
-    res.set({ 'Content-Type': 'text/plain; charset=utf-8' });
-
-    let title = req.body.entryTitle;
-    let body = req.body.entryBody;
-    let timeStamp = new Date();
-    let output = `${entryTitle}: ${entryBody}: ${timeStamp}`;
-
-    res.send(output);
-});
-
 // Close the app
 function shutDownBlogster() {
-    console.log('\nBlogster is shutting down');
+    console.log('\nThanks for using Blogster!');
     db.close();
     server.close();
     process.exit();
@@ -105,22 +95,6 @@ function shutDownBlogster() {
 process.on('SIGINT', shutDownBlogster);
 process.on('SIGTERM', shutDownBlogster);
 process.on('SIGQUIT', shutDownBlogster);
-// process.on('SIGINT', () => {
-
-//     db.close((err) => {
-
-//         console.log('Blogster is shutting down');
-
-//         if (err) {
-//             console.error(err.message);
-//             console.log('Error in closing database... trying to secure your blog entries.');
-//         }          
-//     });
-//     console.log('\nBlogster has closed successfully');
-//     db.close();
-//     server.close();
-//     process.exit();
-// });
 
 // Fire up the server and await input
 app.listen(3000, () => console.log('Blogster is up and running... listening on port 3000'));
