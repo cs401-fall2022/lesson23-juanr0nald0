@@ -48,27 +48,20 @@ router
         };
         db.all("SELECT id, title, blog, dateCreated FROM entries", function(err, rows) {
             rows.forEach(function (row) {
-                console.log(row.id, row.title, row.blog, row.dateCreated);
+                
                 currentEntry.paramOne = row.id;
                 currentEntry.title = row.title;
                 currentEntry.blog = row.blog;
                 currentEntry.dateCreated= row.dateCreated
                 blogEntries.push(currentEntry);
+                console.log(row.id, row.title, row.blog, row.dateCreated);
             })
         })
         
-        
-        // // Manual blog entries to test functionality/rendering
-        // const blogEntries = [{
-        //     title: 'Entry One',
-        //     date: new Date(),
-        //     body: 'Manually creating an entry'
-        // },
-        // {
-        //     title: 'Entry Two',
-        //     date: new Date(),
-        //     body: 'Manually creating a second entry'
-        // }]
+        blogEntries.forEach( entry => {
+            console.log(entry.id, entry.title, entry.blog, entry.dateCreated);
+        })
+
         res.render('blogEntries/read', {blogEntries: blogEntries});
     })
     .post((req, res) => {
