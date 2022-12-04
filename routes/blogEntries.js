@@ -17,16 +17,14 @@ router
         res.render('blogEntries/create')
     })
     .post((req, res) => {
-        let myQueryObject = {
-            paramOne: null,
-            title: req.body.title,
-            blog: req.body.blog,
-            dateCreated: new Date().toDateString().replace(/\s/g,''),
-        };
+        var paramOne = null;
+        var title = req.body.title;
+        var blog = req.body.blog;
+        var dateCreated = new Date().toDateString().replace(/\s/g,'');
     
         var query = 'INSERT INTO entries VALUES(:paramOne, :title, :blog, :dateCreated);';
         
-        db.run(query, [myQueryObject.paramOne, myQueryObject.title, myQueryObject.blog, myQueryObject.dateCreated]);
+        db.run(query, [paramOne, title, blog, dateCreated]);
         res.render('blogEntries/success');
     })
 
@@ -48,7 +46,7 @@ router
             blog: '',
             dateCreated: '',
         };
-        db.all()("SELECT id, title, blog, dateCreated FROM entries", function(err, rows) {
+        db.all("SELECT id, title, blog, dateCreated FROM entries", function(err, rows) {
             rows.forEach(function (row) {
                 console.log(row.id, row.title, row.blog, row.dateCreated);
                 currentEntry.paramOne = row.id;
