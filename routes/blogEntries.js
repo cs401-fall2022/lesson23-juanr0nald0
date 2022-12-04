@@ -39,30 +39,24 @@ router
 router
     .route('/read')
     .get((req, res) => {
-        var blogEntries = [{}];
-        var currentEntry = {
-            paramOne: null,
-            title: '',
-            blog: '',
-            dateCreated: '',
-        };
-        db.all("SELECT id, title, blog, dateCreated FROM entries", function(err, rows) {
-            rows.forEach(function (row) {
-                
-                currentEntry.paramOne = row.id;
-                currentEntry.title = row.title;
-                currentEntry.blog = row.blog;
-                currentEntry.dateCreated= row.dateCreated
-                blogEntries.push(currentEntry);
-                console.log(row.id, row.title, row.blog, row.dateCreated);
-            })
-        })
-        
-        blogEntries.forEach( entry => {
-            console.log(entry.id, entry.title, entry.blog, entry.dateCreated);
-        })
+        let blogEntries = [];
 
-        res.render('blogEntries/read', {blogEntries: blogEntries});
+        db.each("SELECT id, title, blog, dateCreated FROM entries", function(err, row) {
+            var currentEntry = {
+                paramOne: row.id,
+                title: row.title,
+                blog: row.blog,
+                dateCreated: row.dateCreated,
+            };
+            
+            blogEntries.push(currentEntry);
+            })
+
+        function waitThenRender() {
+            res.render('blogEntries/read', {blogEntries: blogEntries});
+        }
+        
+        setTimeout(waitThenRender, 1500);
     })
     .post((req, res) => {
         res.send("test of read POST");
