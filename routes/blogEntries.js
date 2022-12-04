@@ -69,13 +69,15 @@ router
         res.render('blogEntries/edit')
     })
     .post((req, res) => {
-        let postIDNumber = req.body.idnumber;
-        if (req.body.title == null) {
-            var query = 'UPDATE entries SET blog = ' + req.body.blog + '\' WHERE id = ' + postIDNumber + '\''
-        }        
+        console.log('Edit button works');
+
+        // let postIDNumber = req.body.idnumber;
+        // if (req.body.title == null) {
+        //     var query = 'UPDATE entries SET blog = ' + req.body.blog + '\' WHERE id = ' + postIDNumber + '\''
+        // }        
         
         
-        db.run(query, [myQueryObject.paramOne, myQueryObject.title, myQueryObject.blog, myQueryObject.dateCreated]);
+        // db.run(query, [myQueryObject.paramOne, myQueryObject.title, myQueryObject.blog, myQueryObject.dateCreated]);
         res.render('blogEntries/success');
     })
 
