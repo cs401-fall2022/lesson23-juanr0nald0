@@ -76,8 +76,10 @@ router
     .get((req, res) => {
         console.log("I got this via edit GET route " + req.query.editidnumber)
         let query = "SELECT id, title, blog, dateCreated FROM entries WHERE id = " + req.query.editidnumber;
+        var currentEntry = {};
+
         db.each(query, function(err, row) {
-            var currentEntry = {
+            currentEntry = {
                 paramOne: row.id,
                 title: row.title,
                 blog: row.blog,
@@ -91,9 +93,9 @@ router
         setTimeout(waitThenRender, 1500);
     })
     .post((req, res) => {
-        // var postnumber = req.body.editidnumber;
-        // console.log("Post's id number is " + postnumber);
-        // res.render('blogEntries/edit')
+        var postnumber = req.body.editidnumber;
+        console.log("Post's id number is " + postnumber);
+        res.render('blogEntries/success')
     })
 
 // Route /delete is appended to localhost:3000/blogEntries in main.js

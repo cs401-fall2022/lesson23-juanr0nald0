@@ -68,13 +68,31 @@ a:hover {
 }
 
 .cancelButton {
-    color: red;
-    background-color: black;
     padding: 1%;
+    display: block;
+    width: 100px;
+    height: 15px;
+    background: red;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: black;
+    font-weight: bold;
+    line-height: 25px;
 }
 
 .submitButton {
-    color: green;
+    padding: 1%;
+    display: block;
+    width: 100px;
+    height: 15px;
+    background: blue;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    line-height: 25px;
 }
 
 .blogForm {
