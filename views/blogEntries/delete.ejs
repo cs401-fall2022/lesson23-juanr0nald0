@@ -10,7 +10,13 @@
     <div class="box">
         <h1>Delete</h1>
         <h3> Are you sure you want to delete?</h3>
+        <h4> YOU CANNOT UNDO THIS OPERATION</h4>
         <a class="cancelButton" href="/">Cancel</a>
+        <form action="/blogEntries/delete" method="POST">
+            <label for="editidnumber"></label>
+            <input type="number" name="editidnumber" id="editidnumber" value="<%=entry.paramOne%>" required>
+            <button type="submit">Edit</button>
+        </form>
     </div>
 
 </body>
