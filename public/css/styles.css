@@ -24,6 +24,10 @@ a:hover {
     /* background-color: rgba(var(--color), 1); */
 }
 
+.allEntries {
+    color: whitesmoke;
+}
+
 .blogBody {
     font-size: medium;
     padding-left: 2%;
@@ -92,6 +96,7 @@ a:hover {
 }
 
 .entryContainer {
+    background-color: rgba(var(--color), 0.8);
     border: 3px white;
     padding-bottom: 1%;
 }
@@ -124,8 +129,4 @@ a:hover {
 
 .readForm {
     padding-left: 2%;
-}
-.two {
-    background-color: rgba(var(--color), 0.7);
-    color: whitesmoke;
 }
