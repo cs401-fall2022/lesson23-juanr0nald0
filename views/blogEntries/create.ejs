@@ -8,13 +8,14 @@
 
 <body>    
     <div class="box">
-        <h1>New Blogster Entry</h1>
-    
-        <form action="/blogEntries/create" method="POST">
-            <!-- Partial view of a form that is being used by Create and Edit -->
-            <%- include('partial-form-fields') %>
-            
-        </form>
+        <h1 class="headerBar">New Blogster Entry</h1>
+        <div class="entryContainer">
+            <form action="/blogEntries/create" method="POST">
+                <!-- Partial view of a form that is being used by Create and Edit -->
+                <%- include('partial-form-fields') %>
+                
+            </form>
+        </div>
     </div>
 <script type="module" src="./routes/blogEntries.js"></script>
 </body>
