@@ -109,20 +109,35 @@ router
 router
     .route('/delete')
     .get((req, res) => {
-        res.render('blogEntries/delete')
+        let query = "SELECT id, title, blog, dateCreated FROM entries WHERE id = " + req.query.editidnumber;
+        var currentEntry = {};
+
+        db.each(query, function(err, row) {
+            currentEntry = {
+                paramOne: row.id,
+                title: row.title,
+                blog: row.blog,
+                dateCreated: row.dateCreated,
+            };            
+        })
+
+        function waitThenRender() {
+            res.render('blogEntries/delete', {currentEntry: currentEntry});
+        }        
+        setTimeout(waitThenRender, 1500);
     })
     .post((req, res) => {
-        let myQueryObject = {
-            paramOne: null,
-            title: req.body.title,
-            blog: req.body.blog,
-            dateCreated: new Date().toDateString().replace(/\s/g,''),
-        };
-    
-        var query = 'INSERT INTO entries VALUES(:paramOne, :title, :blog, :dateCreated);';
-        
-        db.run(query, [myQueryObject.paramOne, myQueryObject.title, myQueryObject.blog, myQueryObject.dateCreated]);
-        res.render('blogEntries/success');
+        var id = req.body.editidnumber;
+       
+        let deleteQuery = "DELETE FROM entries WHERE id = " +id+ ";"
+
+        db.each(deleteQuery, function(err, row) {
+        })
+
+        function waitThenRender() {
+            res.render('blogEntries/success');
+        }        
+        setTimeout(waitThenRender, 1500);
     })
 
 // The router can be accessed from other files

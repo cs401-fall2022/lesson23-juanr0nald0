@@ -32,6 +32,8 @@
                                 <button class="submitButton" type="submit">Edit</button>
                             </form>
                             <form class ="readForm" action="/blogEntries/delete" method="GET">
+                                <label for="editidnumber"></label>
+                                <input type="number" name="editidnumber" id="editidnumber" value="<%=entry.paramOne%>" hidden>
                                 <button class="cancelButton" type="submit">Delete</button>
                             </form>
                         </div>
