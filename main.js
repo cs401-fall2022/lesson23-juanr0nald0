@@ -1,11 +1,11 @@
 const express = require('express');
-const blogRouter = require('./routes/blogEntries.js'); // Can access the router exported in blogEntries.js
+const blogRouter = require('./routes/blogEntries.js');
 const app = express();
 const path = require('path');
 const sqlite3 = require('sqlite3').verbose();
 const http = require('http');
 const server = http.createServer(app);
-let db = new sqlite3.Database(path.resolve(__dirname,'data/blogsterEntries.sqlite')); // We have a persistent database file!
+let db = new sqlite3.Database(path.resolve(__dirname,'data/blogsterEntries.sqlite'));
 
 
 // Part of link for CSS styling and pictures
@@ -23,19 +23,24 @@ app.set('view engine', 'ejs');
  */
 app.use('/blogEntries', blogRouter);
 
-// Present user with the homepage (index.ejs)
+/**
+ * Present the user with the index/home page upon navigation to http://localhost:3000/
+ */
 app.get('/', (req, res) => {
     res.render('blogEntries/index');
 });
 
 
-// Create an entries table if it doesn't exist
+/**
+ * Creates a database table if it doesn't exist
+ */
 db.serialize(function() {
-    // db.run('DROP TABLE entries');        // Keeping this here for cleanup if necessary
-    db.run('CREATE TABLE IF NOT EXISTS entries(id integer PRIMARY KEY, title TEXT(20), blog TEXT(200), dateCreated TEXT(20))');    
+    db.run('CREATE TABLE IF NOT EXISTS entries(id integer PRIMARY KEY, title TEXT(30), blog TEXT(400), dateCreated TEXT(20))');    
 });
 
-// Close the app
+/**
+ * Run this function during one of three termination signals to close the database and server
+ */
 function shutDownBlogster() {
     console.log('\nThanks for using Blogster!');
     db.close();
