@@ -89,9 +89,20 @@ router
         var id = req.body.editidnumber;
         var title = req.body.title;
         var body = req.body.blog;
-        let editQuery = "UPDATE entries SET title = '" +title+ "', blog = '" +body+ "' WHERE id = " +id+ ";"
+        //Somewhat sanitize the query by removing single quotes from title and body
+        var cleanTitle = title.replace("'/g", "");
+        var cleanBody = body.replace("'/g", "");
+        let editQuery = "UPDATE entries SET title = '" +cleanTitle+ "', blog = '" +cleanBody+ "' WHERE id = " +id+ ";"
+        
         console.log(editQuery);
-        res.render('blogEntries/success')
+
+        db.each(editQuery, function(err, row) {
+        })
+
+        function waitThenRender() {
+            res.render('blogEntries/success');
+        }        
+        setTimeout(waitThenRender, 1500);
     })
 
 // Route /delete is appended to localhost:3000/blogEntries in main.js
