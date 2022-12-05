@@ -60,13 +60,6 @@ router
     })
     .post((req, res) => {
 
-        console.log("You wish to edit Post # " + req.body.editidnumber);
-        // var query = "SELECT * FROM entries WHERE id = " + req.body.editidnumber + ";";
-        // var result = db.get(query, (err, row) => {
-        //     console.log(result);
-        // });
-        // res.send(result);
-
         res.render('blogEntries/edit')
     })
 
@@ -93,8 +86,11 @@ router
         setTimeout(waitThenRender, 1500);
     })
     .post((req, res) => {
-        var postnumber = req.body.editidnumber;
-        console.log("Post's id number is " + postnumber);
+        var id = req.body.editidnumber;
+        var title = req.body.title;
+        var body = req.body.blog;
+        let editQuery = "UPDATE entries SET title = '" +title+ "', blog = '" +body+ "' WHERE id = " +id+ ";"
+        console.log(editQuery);
         res.render('blogEntries/success')
     })
 
