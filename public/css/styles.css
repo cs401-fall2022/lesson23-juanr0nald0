@@ -167,6 +167,11 @@ button:hover {
     width: 98%;
 }
 
+.formFields {
+    color: white;
+    margin-left: 5%;
+}
+
 .headerBar {
     background-color: rgba(var(--color), 0.7);
     color: whitesmoke;
