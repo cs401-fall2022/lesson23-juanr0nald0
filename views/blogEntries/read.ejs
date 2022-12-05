@@ -28,11 +28,11 @@
                         </h5>
                         <form class="readForm" action="/blogEntries/edit" method="GET">
                             <label for="editidnumber"></label>
-                            <input type="number" name="editidnumber" id="editidnumber" value="<%=entry.paramOne%>" required>
-                            <button type="submit">Edit</button>
+                            <input type="number" name="editidnumber" id="editidnumber" value="<%=entry.paramOne%>" hidden>
+                            <button class="submitButton" type="submit">Edit</button>
                         </form>
                         <form class ="readForm" action="/blogEntries/delete" method="GET">
-                            <button type="submit">Delete</button>
+                            <button class="cancelButton" type="submit">Delete</button>
                         </form>
                         </div>
                         <div class="entrySeparator"></div>
