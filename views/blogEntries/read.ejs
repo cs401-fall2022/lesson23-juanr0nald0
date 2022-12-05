@@ -18,22 +18,22 @@
                             <%= entry.title %>
                         </h2>
                         <div class="entrySubsection">
-                        <h4 class="blogDate">
-                            <%= entry.dateCreated %>
-                        </h4>
+                            <h4 class="blogDate">
+                                <%= entry.dateCreated %>
+                            </h4>
                         </div>
                         <div class="entrySubsection">
-                        <h5 class="blogBody">
-                            <%= entry.blog %>
-                        </h5>
-                        <form class="readForm" action="/blogEntries/edit" method="GET">
-                            <label for="editidnumber"></label>
-                            <input type="number" name="editidnumber" id="editidnumber" value="<%=entry.paramOne%>" hidden>
-                            <button class="submitButton" type="submit">Edit</button>
-                        </form>
-                        <form class ="readForm" action="/blogEntries/delete" method="GET">
-                            <button class="cancelButton" type="submit">Delete</button>
-                        </form>
+                            <h5 class="blogBody">
+                                <%= entry.blog %>
+                            </h5>
+                            <form class="readForm" action="/blogEntries/edit" method="GET">
+                                <label for="editidnumber"></label>
+                                <input type="number" name="editidnumber" id="editidnumber" value="<%=entry.paramOne%>" hidden>
+                                <button class="submitButton" type="submit">Edit</button>
+                            </form>
+                            <form class ="readForm" action="/blogEntries/delete" method="GET">
+                                <button class="cancelButton" type="submit">Delete</button>
+                            </form>
                         </div>
                         <div class="entrySeparator"></div>
                     </div>
