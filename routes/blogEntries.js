@@ -90,8 +90,8 @@ router
         var title = req.body.title;
         var body = req.body.blog;
         //Somewhat sanitize the query by removing single quotes from title and body
-        var cleanTitle = title.replace("'/g", "");
-        var cleanBody = body.replace("'/g", "");
+        var cleanTitle = title.replace(/'/g, "");
+        var cleanBody = body.replace(/'/g, "");
         let editQuery = "UPDATE entries SET title = '" +cleanTitle+ "', blog = '" +cleanBody+ "' WHERE id = " +id+ ";"
         
         console.log(editQuery);
