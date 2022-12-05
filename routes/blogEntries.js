@@ -109,8 +109,6 @@ router
         var cleanTitle = title.replace(/'/g, "");
         var cleanBody = body.replace(/'/g, "");
         let editQuery = "UPDATE entries SET title = '" +cleanTitle+ "', blog = '" +cleanBody+ "' WHERE id = " +id+ ";"
-        
-        console.log(editQuery);
 
         db.each(editQuery, function(err, row) {
         })
