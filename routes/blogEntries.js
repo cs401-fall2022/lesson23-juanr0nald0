@@ -60,22 +60,35 @@ router
     })
     .post((req, res) => {
 
+        console.log("You wish to edit Post # " + req.body.editidnumber);
+        // var query = "SELECT * FROM entries WHERE id = " + req.body.editidnumber + ";";
+        // var result = db.get(query, (err, row) => {
+        //     console.log(result);
+        // });
+        // res.send(result);
 
-        var query = "SELECT * FROM entries WHERE id = " + req.body.editidnumber + ";";
-        var result = db.get(query, (err, row) => {
-            console.log(result);
-        });
-        res.send(result);
-
-        // res.render('blogEntries/edit')
+        res.render('blogEntries/edit')
     })
 
 // Route /edit is appended to localhost:3000/blogEntries in main.js
 router
     .route('/edit')
     .get((req, res) => {
-      
-        res.render('blogEntries/edit')
+        console.log("I got this via edit GET route " + req.query.editidnumber)
+        let query = "SELECT id, title, blog, dateCreated FROM entries WHERE id = " + req.query.editidnumber;
+        db.each(query, function(err, row) {
+            var currentEntry = {
+                paramOne: row.id,
+                title: row.title,
+                blog: row.blog,
+                dateCreated: row.dateCreated,
+            };            
+        })
+
+        function waitThenRender() {
+            res.render('blogEntries/edit', {currentEntry: currentEntry});
+        }        
+        setTimeout(waitThenRender, 1500);
     })
     .post((req, res) => {
         // var postnumber = req.body.editidnumber;

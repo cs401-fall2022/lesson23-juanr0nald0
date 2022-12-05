@@ -127,6 +127,10 @@ a:hover {
     margin-bottom: 20px;
 }
 
+.noInput {
+    pointer-events: none;
+    size: 3;
+}
 .readForm {
     padding-left: 2%;
 }
