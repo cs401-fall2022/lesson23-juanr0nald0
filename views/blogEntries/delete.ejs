@@ -9,16 +9,13 @@
 <body>    
     <div class="box">
         <h1 class="headerBar">Delete</h1>
-        <h3 class="headerBar"> Are you sure you want to delete your post?</h3>
-        <a class="cancelButton" href="/">Cancel</a>
-
-        <h4 class="headerBar"> YOU CANNOT UNDO THIS OPERATION</h4>
+        <h3 class="headerBar"> Are you sure you want to delete your post? YOU CANNOT UNDO THIS OPERATION</h4>
         
         <div class="entryContainer">
             <form action="/blogEntries/delete" method="POST">
                 <div class="formFields">
                     <label for="editidnumber">ID Number</label>
-                    <input type="number" name="editidnumber" id="editidnumber" value="<%=currentEntry.paramOne%>" required>
+                    <input type="number" name="editidnumber" id="editidnumber" value="<%=currentEntry.paramOne%>" hidden required>
                 </div>
                 <div class="formFields">
                     <label for="title">Title</label>

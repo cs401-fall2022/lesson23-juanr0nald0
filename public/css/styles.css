@@ -170,6 +170,7 @@ button:hover {
 .formFields {
     color: white;
     margin-left: 5%;
+    font-weight: bold;
 }
 
 .headerBar {
@@ -196,4 +197,5 @@ button:hover {
     background-color: rgba(var(--color), 0.8);
     border: 3px white;
     padding: 2%;
+    color: white
 }
