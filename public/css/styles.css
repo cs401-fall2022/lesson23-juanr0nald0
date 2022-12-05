@@ -67,14 +67,18 @@ a:hover {
     text-decoration: none;
 }
 
+button:hover {
+    background-color: rgb(33, 52, 66);
+}
+
 .cancelButton {
     appearance: none;
-    background-color: red;
+    background-color: rgb(125, 2, 2);
     border: 1px solid rgba(27, 31, 35, .15);
     border-radius: 6px;
     box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
     box-sizing: border-box;
-    color: #fff;
+    color: white;
     cursor: pointer;
     display: inline-block;
     font-size: 14px;
@@ -90,12 +94,12 @@ a:hover {
 
 .revertButton {
     appearance: none;
-    background-color: blue;
+    background-color: rgb(5, 92, 5);
     border: 1px solid rgba(27, 31, 35, .15);
     border-radius: 6px;
     box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
     box-sizing: border-box;
-    color: #fff;
+    color: white;
     cursor: pointer;
     display: inline-block;
     font-size: 14px;
@@ -111,12 +115,12 @@ a:hover {
 
 .submitButton {
     appearance: none;
-    background-color: green;
+    background-color: rgb(8, 8, 126);
     border: 1px solid rgba(27, 31, 35, .15);
     border-radius: 6px;
     box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
     box-sizing: border-box;
-    color: #fff;
+    color: white;
     cursor: pointer;
     display: inline-block;
     font-size: 14px;
