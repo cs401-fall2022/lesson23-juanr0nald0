@@ -27,7 +27,7 @@ router
 
         //Somewhat sanitize the query by removing single quotes from title and body
         var cleanTitle = title.replace(/'/g, "");
-        var cleanBody = body.replace(/'/g, "");
+        var cleanBody = blog.replace(/'/g, "");
     
         var query = 'INSERT INTO entries VALUES(:paramOne, :cleanTitle, :cleanBody, :dateCreated);';
         
