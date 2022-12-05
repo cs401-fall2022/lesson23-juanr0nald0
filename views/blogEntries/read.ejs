@@ -26,7 +26,9 @@
                         <h5 class="blogBody">
                             <%= entry.blog %>
                         </h5>
-                        <form action="/blogEntries/edit" method="GET">
+                        <form action="/blogEntries/edit" method="POST">
+                            <label for="editidnumber"></label>
+                            <input type="number" name="editidnumber" id="editidnumber" value="<%=entry.paramOne%>" required>
                             <button type="submit">Edit</button>
                         </form>
                         <form action="/blogEntries/delete" method="GET">

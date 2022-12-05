@@ -66,19 +66,31 @@ router
 router
     .route('/edit')
     .get((req, res) => {
+        var postnumber = 0;
+        console.log(String(req));
+        console.log(String(req.body));
+        console.log(String(req.body.title));
+        postnumber = req.body.editidnumber;
+        console.log("Post's id number is " + postnumber);
         res.render('blogEntries/edit')
     })
     .post((req, res) => {
-        console.log('Edit button works');
+        // console.log('Edit button works');
 
         // let postIDNumber = req.body.idnumber;
-        // if (req.body.title == null) {
-        //     var query = 'UPDATE entries SET blog = ' + req.body.blog + '\' WHERE id = ' + postIDNumber + '\''
-        // }        
+        // // if (req.body.title == null) {
+        // //     var query = 'UPDATE entries SET blog = ' + req.body.blog + '\' WHERE id = ' + postIDNumber + '\''
+        // // }        
+        // console.log(req.body.idnumber)
         
-        
-        // db.run(query, [myQueryObject.paramOne, myQueryObject.title, myQueryObject.blog, myQueryObject.dateCreated]);
-        res.render('blogEntries/success');
+        // // db.run(query, [myQueryObject.paramOne, myQueryObject.title, myQueryObject.blog, myQueryObject.dateCreated]);
+        // res.render('blogEntries/success');
+
+
+        var postnumber = 0;
+        postnumber = req.body.editidnumber;
+        console.log("Post's id number is " + postnumber);
+        res.render('blogEntries/edit')
     })
 
 // Route /delete is appended to localhost:3000/blogEntries in main.js
