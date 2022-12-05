@@ -11,7 +11,7 @@
         <h1 class="headerBar">Edit Your Entry!</h1>        
         <h3 class="entryContainer">Update the title or the body of your Blogster entry!</h3>
 
-        <div class="entryContainer">
+        <div class="textContainer">
             <form action="/blogEntries/edit" method="POST">
                 <div class="formFields">
                     <label for="editidnumber"></label>
@@ -23,7 +23,7 @@
                 </div>
                 <div class="formFields">
                     <label for="blog">Blog</label>
-                    <textarea type="text" name="blog" id="blog" required><%=currentEntry.blog%></textarea>
+                    <textarea type="text" name="blog" id="blog" rows="10" cols="60" required><%=currentEntry.blog%></textarea>
                 </div>
                 <button class="submitButton" type="submit">Submit Update</button>
                 <button class="revertButton" type="reset">Revert to Original</button>
